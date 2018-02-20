@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SESSION_REPLAY_DIR="$(mktemp --directory -u)"
-unzip "$1" -d "$SESSION_REPLAY_DIR" -q
+unzip -q "$1" -d "$SESSION_REPLAY_DIR"
 scriptreplay -t "$SESSION_REPLAY_DIR"/session.timing "$SESSION_REPLAY_DIR"/session.data
 rm -rf "$SESSION_REPLAY_DIR"
 
