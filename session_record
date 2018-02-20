@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+SESSION_TMP="$(mktemp --directory)"
+script --timing="$SESSION_TMP/session.timing" "$SESSION_TMP/session.data" -q
+
+
+SESSION_ARCHIVE="$(mktemp -u session-XXXXX.zip)"
+cd "$SESSION_TMP"
+zip -9r "$SESSION_TMP/$SESSION_ARCHIVE" * -q
+cd -
+mv "$SESSION_TMP/$SESSION_ARCHIVE" .
+echo "Your session record created at \"$SESSION_ARCHIVE\"."
+rm -rf "$SESSION_TMP"
