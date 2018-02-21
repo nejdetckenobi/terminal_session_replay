@@ -6,7 +6,7 @@ script --timing="$SESSION_FOLDER/session.timing" "$SESSION_FOLDER/session.data" 
 if [[ -z "$1" ]]; then
     SESSION_ARCHIVE="$(mktemp -u session-XXXXX.zip)"
 else
-    SESSION_ARCHIVE="$1"
+    SESSION_ARCHIVE="$1.zip"
 fi
 
 cd "$SESSION_FOLDER"
