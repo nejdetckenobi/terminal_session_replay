@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-
-SESSION_REPLAY_DIR="$(mktemp --directory -u)"
-unzip -q "$1" -d "$SESSION_REPLAY_DIR"
-scriptreplay -t "$SESSION_REPLAY_DIR"/session.timing "$SESSION_REPLAY_DIR"/session.data
-rm -rf "$SESSION_REPLAY_DIR"
-
+if [[ -z "$1" ]]; then
+    echo "You should provide a session archive."
+else
+    SESSION_REPLAY_DIR="$(mktemp --directory -u)"
+    unzip -q "$1" -d "$SESSION_REPLAY_DIR"
+    scriptreplay -t "$SESSION_REPLAY_DIR"/session.timing "$SESSION_REPLAY_DIR"/session.data
+    rm -rf "$SESSION_REPLAY_DIR"
+fi
